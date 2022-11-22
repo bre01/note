@@ -1,0 +1,12 @@
+{% extends 'app_note/base.html' %} 
+{% block content %}
+<ul>
+    {% for topic in topics %}
+        <li><a href="{% url "app_note:topic" topic.id %}"> {{topic.topic_name}} </a><li>
+    {%empty%}
+        <li>nothing has been added yet<li>
+
+    {% endfor %}
+
+</ul>
+{% endblock content %}

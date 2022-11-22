@@ -1,0 +1,30 @@
+{% load bootstrap5 %}
+<!doctype html>
+<html lang="en">
+<haed>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+
+    <title>my_note</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript  %}
+</haed>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">    
+    <a class="navbar-brand" href="{% url 'app_note:index' %} ">Index</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-traget="$navbarCollapse" aria-controls="navbarCollapse"
+    aria-expanded="false" aria-label="toggle navigation"><span class="navbar-toggle-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'app_note:topics' %}" >topics</a>
+            </li>
+        </ul>
+    </div>
+</body>
+{%block content %}
+
+{%endblock content%}

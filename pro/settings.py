@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #my apps
     'app_note',
+    #third party
+    'bootstrap4',
 
     'django.contrib.admin',
     'django.contrib.auth',
