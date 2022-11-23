@@ -18,3 +18,8 @@ def topic(request,topic_id):
     entries=topic.entry_set.order_by("date_added")
     context={"topic":topic,"entries":entries}
     return render(request,"app_note/topic.html",context)
+
+def post(request,entry_id):
+    entry=Entry.objects.get(id=entry_id)
+    context={"entry":entry}
+    return render(request,"app_note/entry.html",context)
