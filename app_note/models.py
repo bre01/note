@@ -15,13 +15,13 @@ class Description(models.Model):
     def __str__(self):
         return self.text[:10]
 
-class Entry(models.Model):
+class Post(models.Model):
     topic=models.ForeignKey(Topic, on_delete=models.CASCADE) # connetct entry to topic by a "id" key
     title=models.TextField(max_length=50)
     text=models.TextField(max_length=10000,default="why")
     date_added=models.DateTimeField(auto_now_add=True)
     class Meta():
-        verbose_name_plural="entries"
+        verbose_name_plural="posts"
     def __str__(self):
         return self.title
 

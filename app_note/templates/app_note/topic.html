@@ -1,15 +1,42 @@
 {% extends 'app_note/base.html' %}
+{% block title%} 
+<title>{{topic}} posts</title>
+{% endblock title%}
 {% block content %}
-    <p>Topic:  {{topic.topic_name}}</p>
-    <p>Entries: </p>
-    <ol>
-        {% for entry in entries %}
-            <li>
-                <p>{{entry.date_added|date:"M d,Y H:i"}}</p>
-                <p>{{entry.text | linebreaks}}</p>  
-            </li>
-        {%empty%}
-            <li>this topic has no entries</li>
-        {% endfor %}
-    </ol>
+{% load static %}
+<header class="masthead" style="background-image:url({% static 'app_note/img/cofee-01-sh-iwb-220822_1661167194119_hpMain_16x9_992.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto position-relative">
+                <div class="post-heading">
+                    <h1>I love coffee,and I <i>absolutely</i> wanna talk about coffee</h1>
+                    <h2 class="subheading">but keep in mind don't get addicted to it</h2>
+                    <span class="meta">topic create at<a href="#"></a>&nbsp; {{topic.date_added}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto">
+                {% for post in posts %}
+                <ul>
+                    <li>
+                        <div class="post-preview">
+                            <a href="post/{{post.id}}.html">
+                
+                <h2 class="post-title">{{post.title}}</h2>
+                        <h3 class="post-subtitle">{{post.text|truncatechars:200 }}</h3>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
 {% endblock content %}

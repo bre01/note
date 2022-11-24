@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .models import Topic,Entry
+from .models import Topic,Post
 # Create your views here.
 def index(request):
     topics=Topic.objects.order_by("date_added")#it's a list
-    entries=Entry.objects.order_by("date_added")
+    posts=Post.objects.order_by("date_added")
     
-    context={'topics':topics,"entries":entries} #while context is a dictionary
+    context={'topics':topics,"posts":posts} #while context is a dictionary
     return render(request, 'app_note/index.html',context)
 
 def topics(request):
@@ -15,11 +15,14 @@ def topics(request):
 
 def topic(request,topic_id):
     topic=Topic.objects.get(id=topic_id)
-    entries=topic.entry_set.order_by("date_added")
-    context={"topic":topic,"entries":entries}
+    posts=topic.post_set.order_by("date_added")
+    context={"topic":topic,"posts":posts}
     return render(request,"app_note/topic.html",context)
+def posts(request):
+    return 0
 
 def post(request,entry_id):
-    entry=Entry.objects.get(id=entry_id)
-    context={"entry":entry}
-    return render(request,"app_note/entry.html",context)
+    post=Post.objects.get(id=entry_id)
+    
+    context={"entry":post}
+    return render(request,"app_note/post.html",context)
