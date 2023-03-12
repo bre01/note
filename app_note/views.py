@@ -5,7 +5,7 @@ def index(request):
     topics=Topic.objects.order_by("date_added")#it's a list
     posts=Post.objects.order_by("date_added")
     
-    context={'topics':topics,"posts":posts} #while context is a dictionary
+    context={'topics':topics,"posts":posts[:1]} #while context is a dictionary
     return render(request, 'app_note/index.html',context)
 
 def topics(request):
@@ -19,10 +19,21 @@ def topic(request,topic_id):
     context={"topic":topic,"posts":posts}
     return render(request,"app_note/topic.html",context)
 def posts(request):
-    return 0
+    posts=Post.objects.order_by("date_added")
+    context={"posts":posts}
+
+
+    return render(request,"app_note/posts.html",context)
 
 def post(request,entry_id):
     post=Post.objects.get(id=entry_id)
-    
-    context={"entry":post}
+    context={"post":post}
     return render(request,"app_note/post.html",context)
+
+
+    
+
+
+def about(request):
+    context={}
+    return render(request,"app_note/about.html",context)

@@ -1,4 +1,7 @@
-{% extends 'app_note/base.html' %} 
+{% extends 'app_note/base.html' %}
+{% block title %}
+<title>all topics</title>
+{% endblock title %}
 {% block content %}
 <ul>
     {% for topic in topics %}

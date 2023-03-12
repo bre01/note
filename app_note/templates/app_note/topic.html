@@ -1,5 +1,5 @@
 {% extends 'app_note/base.html' %}
-{% block title%} 
+{% block title%}
 <title>{{topic}} posts</title>
 {% endblock title%}
 {% block content %}
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-10 col-lg-8 mx-auto position-relative">
                 <div class="post-heading">
-                    <h1>I love coffee,and I <i>absolutely</i> wanna talk about coffee</h1>
+                    <h1>I love {{ topic }},and I <i>absolutely</i> wanna talk about {{ topic }}</h1>
                     <h2 class="subheading">but keep in mind don't get addicted to it</h2>
                     <span class="meta">topic create at<a href="#"></a>&nbsp; {{topic.date_added}}</span>
                 </div>
@@ -26,7 +26,7 @@
                 <ul>
                     <li>
                         <div class="post-preview">
-                            <a href="post/{{post.id}}.html">
+                            <a href="post/{{post.id}}">
                 
                 <h2 class="post-title">{{post.title}}</h2>
                         <h3 class="post-subtitle">{{post.text|truncatechars:200 }}</h3>
